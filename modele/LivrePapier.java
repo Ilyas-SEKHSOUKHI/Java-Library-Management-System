@@ -42,8 +42,14 @@ public class LivrePapier extends Livre{
     }
     @Override
     public String getDetails(){
+        // [Marcus Sterling - Senior Java Architect]:
+        // Remplis cette méthode avec les détails spécifiques de l'ouvrage papier :
+        // return "Rayon: " + emplacementRayon + " (" + nombreExemplaires + " exemplaires disponibles)";
         return "";
     }
+    // [Marcus Sterling - Senior Java Architect]:
+    // Comme pour LivreNumerique, tu peux supprimer ce toString() :
+    // Livre.toString() va automatiquement appeler getDetails() pour formater les détails du papier !
     @Override
     public String toString(){ // A Continuer
         return "Id "+getId()+

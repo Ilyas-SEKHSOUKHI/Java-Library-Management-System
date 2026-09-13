@@ -28,7 +28,14 @@ public abstract class Livre implements Empruntable {
         this.id = UUID.randomUUID();
         this.titre = "unknow";
         this.auteur = "unknow";
+        // [Marcus Sterling - Senior Java Architect]:
+        // ATTENTION : Genre.valueOf("unknow") va faire crasher ton programme avec IllegalArgumentException !
+        // 'valueOf' cherche le nom exact d'une constante déclarée dans l'enum. Comme "unknow" n'existe pas,
+        // ça explose à l'exécution.
+        // Solution : Mets une constante existante par défaut (ex: Genre.ROMAN) ou supprime ce constructeur vide.
         this.genre = Genre.valueOf("unknow"); // I should know what should valueOf() do
+        // [Marcus Sterling - Senior Java Architect]:
+        // Idem ici : StatutLivre.valueOf("unknow") va crasher. Mets plutôt : this.status = StatutLivre.DISPONIBLE;
         this.status = StatutLivre.valueOf("unknow"); // same
         this.anneePublication = 0;
 
@@ -75,17 +82,31 @@ public abstract class Livre implements Empruntable {
     public abstract String getDetails();
 
     // Method Implemented from Empruntable
+    // [Marcus Sterling - Senior Java Architect]:
+    // 'Membre' est la classe Membre.java située dans le même dossier.
+    // Dans le corps de cette méthode, pour emprunter :
+    // this.status = StatutLivre.EMPRUNTE;
     public void emprunter(Membre membre){ // where is Menbre type should i created
 
     }
+    // [Marcus Sterling - Senior Java Architect]:
+    // Pour rendre le livre :
+    // this.status = StatutLivre.DISPONIBLE;
     public void rendre(){
 
     }
+    // [Marcus Sterling - Senior Java Architect]:
+    // Un livre est disponible si son statut est StatutLivre.DISPONIBLE :
+    // return this.status == StatutLivre.DISPONIBLE;
     public boolean estDisponible(){
         return false;
     }
 
     // toString
+    // [Marcus Sterling - Senior Java Architect]:
+    // Pour exploiter le polymorphisme, Livre.toString() doit appeler getDetails() :
+    // return "Id: " + id + ", Titre: " + titre + ", Auteur: " + auteur + ", Genre: " + genre +
+    //        ", Statut: " + status + ", Année: " + anneePublication + " | " + getDetails();
     @Override
     public String toString(){ // A Continuer
         return "Id "+id+

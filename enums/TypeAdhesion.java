@@ -4,4 +4,9 @@ public enum TypeAdhesion {
     private TypeAdhesion(int limiteEmprunts){
         this.limiteEmprunts = limiteEmprunts;
     }
+    // [Marcus Sterling - Senior Java Architect]:
+    // C'est ce getter qui manquait pour Membre.peutEmprunter() ! Ajoute :
+    // public int getLimiteEmprunts(){
+    //     return this.limiteEmprunts;
+    // }
 }
