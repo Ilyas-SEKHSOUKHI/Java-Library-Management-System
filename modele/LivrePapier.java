@@ -7,14 +7,6 @@ Ajoute un attribut `int nombreExemplaires` et un attribut `String emplacementRay
 */
 
 import java.util.UUID;
-
-/*
-- `id` : `UUID`, généré via `UUID.randomUUID()` dans le constructeur, **jamais modifiable** (final, pas de setter)
-- `titre`, `auteur` : `String`
-- `genre` : `Genre`
-- `statut` : `StatutLivre`
-- `anneePublication` : `int`
-*/
 public class LivrePapier extends Livre{
     private int nombreExemplaires;
     private String emplacementRayon;
@@ -45,12 +37,12 @@ public class LivrePapier extends Livre{
         // [Marcus Sterling - Senior Java Architect]:
         // Remplis cette méthode avec les détails spécifiques de l'ouvrage papier :
         // return "Rayon: " + emplacementRayon + " (" + nombreExemplaires + " exemplaires disponibles)";
-        return "";
+        return "Rayon: " + emplacementRayon + " (" + nombreExemplaires + " exemplaires disponibles)";
     }
     // [Marcus Sterling - Senior Java Architect]:
     // Comme pour LivreNumerique, tu peux supprimer ce toString() :
     // Livre.toString() va automatiquement appeler getDetails() pour formater les détails du papier !
-    @Override
+    /*@Override
     public String toString(){ // A Continuer
         return "Id "+getId()+
                 " titre "+getTitre()+
@@ -60,5 +52,5 @@ public class LivrePapier extends Livre{
                 " Annee Publication "+getAnneePublication()+
                 " Nombre Exemplaires "+nombreExemplaires+
                 " Emplacement Rayon "+emplacementRayon;
-    }
+    }*/
 }

@@ -1,20 +1,5 @@
 import java.util.ArrayList;
 
-/*
-## 8. Classe `Bibliotheque` (le service central)
-Attributs :
-- `List<Livre> catalogue`
-- `List<Membre> membres`
-
-Méthodes obligatoires :
-- `ajouterLivre(Livre livre)`
-- `inscrireMembre(Membre membre)`
-- `emprunterLivre(UUID idLivre, UUID idMembre) throws LivreIndisponibleException, LimiteEmpruntAtteinteException`
-- `rendreLivre(UUID idLivre, UUID idMembre)`
-- `rechercherParGenre(Genre genre)` → retourne une `List<Livre>` filtrée (tu peux utiliser les Streams Java : `catalogue.stream().filter(...).collect(...)`)
-- `rechercherParStatut(StatutLivre statut)` → idem
-- `afficherCatalogue()` → parcourt et affiche chaque livre en utilisant le polymorphisme (une seule boucle, `toString()` s'adapte au type réel de chaque objet)
-*/
 public class Bibliotheque {
     private ArrayList<Livre> catalogue;
     private ArrayList<Membre> membres;
@@ -49,6 +34,7 @@ public class Bibliotheque {
         // Pour implémenter cette méthode sans changer la signature :
         // 1. (Optionnel mais recommandé) : Vérifie que le paramètre n'est pas null : if (livre != null)
         // 2. Ajoute le livre à la liste interne : this.catalogue.add(livre);
+        this.catalogue.add(livre);
     }
     public void inscrireMembre(Membre membre){
         // I should now how can i do it
@@ -56,6 +42,7 @@ public class Bibliotheque {
         // Même principe ici :
         // 1. (Optionnel) : Vérifie if (membre != null)
         // 2. Ajoute le membre à la liste interne : this.membres.add(membre);
+        this.membres.add(membre);
     }
 
     // I should complete bibliotheque methods , I still don't know how to do it

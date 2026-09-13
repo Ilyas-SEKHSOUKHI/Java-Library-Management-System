@@ -6,15 +6,15 @@ public enum StatutLivre {
     // EMPRUNTE("Actuellement emprunté"),
     // PERDU("Déclaré perdu"),
     // EN_REPARATION("En cours de réparation");
-    DISPONIBLE,EMPRUNTE,PERDU,EN_REPARATION;
+    DISPONIBLE("Disponible à l'emprunt"),
+    EMPRUNTE("Actuellement emprunté"),
+    PERDU("Déclaré perdu"),
+    EN_REPARATION("En cours de réparation");
     private String libelleAffichage;
     // [Marcus Sterling - Senior Java Architect]:
     // Et change le constructeur pour accepter le paramètre :
-    // private StatutLivre(String libelleAffichage) {
-    //     this.libelleAffichage = libelleAffichage;
-    // }
-    private StatutLivre(){
-        this.libelleAffichage = "Disponible à l'emprunt";
+    private StatutLivre(String libelleAffichage) {
+         this.libelleAffichage = libelleAffichage;
     }
     public String getLibelleAffichage(){
         return libelleAffichage;

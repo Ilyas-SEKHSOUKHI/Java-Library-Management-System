@@ -6,7 +6,7 @@ public enum TypeAdhesion {
     }
     // [Marcus Sterling - Senior Java Architect]:
     // C'est ce getter qui manquait pour Membre.peutEmprunter() ! Ajoute :
-    // public int getLimiteEmprunts(){
-    //     return this.limiteEmprunts;
-    // }
+    public int getLimiteEmprunts(){
+         return this.limiteEmprunts;
+    }
 }

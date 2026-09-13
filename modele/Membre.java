@@ -1,21 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-/*
-## 6. Classe `Membre`
-Attributs privés :
-- `id` : `UUID`
-- `nom`, `prenom` : `String`
-- `typeAdhesion` : `TypeAdhesion`
-- `livresEmpruntes` : une `List<Livre>` (utilise `ArrayList` en interne)
-
-Méthodes :
-- Constructeur classique
-- `getLivresEmpruntes()` doit retourner une **copie non modifiable** de la liste (`Collections.unmodifiableList(...)` ou une copie défensive) — ne jamais retourner la référence interne directement. C'est un point d'encapsulation important en Java.
-- `peutEmprunter()` : retourne `true` si `livresEmpruntes.size() < typeAdhesion.getLimiteEmprunts()`
-- `ajouterEmprunt(Livre livre)` et `retirerEmprunt(Livre livre)` (package-private ou appelées uniquement depuis `Bibliotheque`, à toi de décider de la visibilité)
-- `toString()` redéfini
-*/
 public class Membre {
     private UUID id;
     private String nom;
@@ -73,14 +58,14 @@ public class Membre {
         // Pour protéger ta collection (encapsulation défensive), utilise :
         // return new ArrayList<>(livresEmpruntes); // copie défensive
         // ou encore mieux : Collections.unmodifiableList(livresEmpruntes);
-        return livresEmpruntes;                   // I should not do it like that
+        return new ArrayList<>(livresEmpruntes);
     }
-    public void setLivresEmpruntes(ArrayList<Livre> livresEmpruntes){
+    /*public void setLivresEmpruntes(ArrayList<Livre> livresEmpruntes){
         // [Marcus Sterling - Senior Java Architect]:
         // Conseil : En bonne pratique POO, supprime ce setter. Un membre ajoute ou retire des livres
         // un par un (via ajouterEmprunt/retirerEmprunt), on ne remplace jamais toute sa liste d'un coup.
         this.livresEmpruntes = livresEmpruntes;
-    }
+    }*/
 
     // Method not completed
     public boolean peutEmprunter(){ // I should complete this method
@@ -103,14 +88,14 @@ public class Membre {
     // 1. Change la visibilité de 'private' à package-private (sans mot clé) ou 'public',
     //    sinon la classe Bibliotheque ne pourra pas y accéder !
     // 2. Écris : this.livresEmpruntes.add(livre);
-    private void ajouterEmprunt(Livre livre){
-
+    public void ajouterEmprunt(Livre livre){
+        this.livresEmpruntes.add(livre);
     }
     // [Marcus Sterling - Senior Java Architect]:
     // 1. Change la visibilité de 'private' à package-private ou 'public'.
     // 2. Écris : this.livresEmpruntes.remove(livre);
-    private void retirerEmprunt(Livre livre){
-
+    public void retirerEmprunt(Livre livre){
+        this.livresEmpruntes.remove(livre);
     }
 
     //toString
